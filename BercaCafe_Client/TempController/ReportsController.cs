@@ -1,0 +1,12 @@
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace BercaCafe_Client.TempController
+{
+    public class ReportsController : Controller
+    {
+        public IActionResult MenuReport()
+        {
+            return View();
+        }
+    }
+}

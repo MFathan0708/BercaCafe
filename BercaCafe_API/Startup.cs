@@ -1,3 +1,5 @@
+using APIDapper.Repositories;
+using APIDapper.Repositories.Interfaces;
 using BercaCafe_API.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,6 +36,7 @@ namespace BercaCafe_API
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
             services.AddDbContext<BercaCafeContext>(options =>
             options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("BercaCafe")));
+            services.AddScoped<IReport, ReportRepository>();
             services.AddCors(e =>
             {
 

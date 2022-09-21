@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BercaCafe_API", "BercaCafe_API\BercaCafe_API.csproj", "{CD114722-883D-4E31-B586-45A11EB5AA3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BercaCafe_Client", "BercaCafe_Client\BercaCafe_Client.csproj", "{CF5A0CE2-ACE0-4919-9086-F2B0A48401AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BercaCafe_Client", "BercaCafe_Client\BercaCafe_Client.csproj", "{CF5A0CE2-ACE0-4919-9086-F2B0A48401AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
