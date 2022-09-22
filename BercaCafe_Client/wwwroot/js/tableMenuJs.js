@@ -14,13 +14,12 @@ $(document).ready(function () {
         "autoWidth": false,
         "responsive": true,
         "ajax": {
-            "url": "https://localhost:44331/api/Reports?fromDate=" + splitDate[0].toString().trim().replaceAll('/', '-') + "&thruDate=" + splitDate[0].toString().trim().replaceAll('/', '-'),
+            "url": "https://localhost:44331/api/Reports/ReportMenu?fromDate=" + splitDate[0].toString().trim().replaceAll('/', '-') + "&thruDate=" + splitDate[0].toString().trim().replaceAll('/', '-'),
             "type": "GET",
             "dataType": "json",
             "dataSrc": "result",
             async: true,
             error: function (data) {
-                console.log(data);
             }
         },
         "bDestroy": true,
@@ -65,13 +64,12 @@ $(document).ready(function () {
 function searchFromDate() {
     $('#tblMenuReport').DataTable().clear().draw();
     splitDate = $('#dateFilter').val().toString().split('-');
-    console.log("https://localhost:44331/api/Reports?fromDate=" + splitDate[0].toString().trim().replaceAll('/', '-') + "&thruDate=" + splitDate[0].toString().trim().replaceAll('/', '-'));
     table = $('#tblMenuReport').DataTable({
         "paging": true,
         "autoWidth": false,
         "responsive": true,
         "ajax": {
-            "url": "https://localhost:44331/api/Reports?fromDate=" + splitDate[0].toString().trim().replaceAll('/', '-') + "&thruDate=" + splitDate[0].toString().trim().replaceAll('/', '-'),
+            "url": "https://localhost:44331/api/Reports/ReportMenu?fromDate=" + splitDate[0].toString().trim().replaceAll('/', '-') + "&thruDate=" + splitDate[0].toString().trim().replaceAll('/', '-'),
             "type": "GET",
             "dataType": "json",
             "dataSrc": "result",
@@ -120,4 +118,4 @@ function searchFromDate() {
             cell.innerHTML = i + 1;
         });
     }).draw();
-}
+};

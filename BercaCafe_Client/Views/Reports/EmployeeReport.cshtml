@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewData["Title"] = "EmployeeReport";
+    ViewData["Page"] = "Reports";
+    Layout = "~/Pages/Shared/_DashboardLayout.cshtml";
+    ViewData["Now"] = DateTime.Now.ToString("MM-dd-yyyy");
+}
+@section css{
+    <link href="~/newtemplate/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+    <!-- Date picker plugins css -->
+    <link href="~/newtemplate/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+    <!-- Daterange picker plugins css -->
+    <link href="~/newtemplate/assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+    <link href="~/newtemplate/assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+}
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Data Employee Report</h4>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 ">
+                                <div class="example">
+                                    <h5 class="box-title m-t-30">Date Filter</h5>
+                                    <input class="form-control input-daterange-datepicker" type="text" name="daterange" id="dateFilter" value="@ViewData["Now"] - @ViewData["Now"]" />
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <button type="button" class="btn btn-rounded btn-block btn-info" onclick="searchFromDate()">Get Data</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive m-t-40">
+                        <table id="tblMenuReport" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Menus Name</th>
+                                    <th>Ice</th>
+                                    <th>Hot</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts{
+    <script src="~/newtemplate/assets/plugins/moment/moment.js"></script>
+    <script src="~/newtemplate/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- Date Picker Plugin JavaScript -->
+    <script src="~/newtemplate/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- Date range Plugin JavaScript -->
+    <script src="~/newtemplate/assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="~/newtemplate/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="~/js/tablemenujs.js"></script>
+    <script src="~/newtemplate/assets/plugins/datatables/jquery.datatables.min.js"></script>
+}

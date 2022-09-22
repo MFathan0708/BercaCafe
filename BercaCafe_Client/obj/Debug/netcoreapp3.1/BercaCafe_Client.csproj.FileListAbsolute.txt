@@ -777,3 +777,4 @@ D:\repos\BercaCafe\BercaCafe_Client\obj\Debug\netcoreapp3.1\BercaCafe_Client.csp
 D:\repos\BercaCafe\BercaCafe_Client\obj\Debug\netcoreapp3.1\BercaCafe_Client.dll
 D:\repos\BercaCafe\BercaCafe_Client\obj\Debug\netcoreapp3.1\BercaCafe_Client.pdb
 D:\repos\BercaCafe\BercaCafe_Client\obj\Debug\netcoreapp3.1\BercaCafe_Client.genruntimeconfig.cache
+D:\repos\BercaCafe\BercaCafe_Client\obj\Debug\netcoreapp3.1\Razor\Views\Reports\EmployeeReport.cshtml.g.cs
