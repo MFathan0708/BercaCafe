@@ -8,6 +8,9 @@ $('.input-daterange-datepicker').daterangepicker({
 
 
 $(document).ready(function () {
+    var date = new Date();
+    date = new Date(date.getFullYear(), date.getMonth(), 1);
+    console.log(date.);
     splitDate = $('#dateFilter').val().toString().split('-');
     table = $('#tblMenuReport').DataTable({
         "paging": true,
