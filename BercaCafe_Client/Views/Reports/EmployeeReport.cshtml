@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewData["Title"] = "EmployeeReport";
+    ViewData["Title"] = "Employee Report";
     ViewData["Page"] = "Reports";
     Layout = "~/Pages/Shared/_DashboardLayout.cshtml";
     ViewData["Now"] = DateTime.Now.ToString("MM-dd-yyyy");
@@ -21,29 +21,36 @@
                     <h4 class="card-title">Data Employee Report</h4>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-4 ">
-                                <div class="example">
+                            <div class="col-md-3">
+                                <div class="form-group">
                                     <h5 class="box-title m-t-30">Date Filter</h5>
-                                    <input class="form-control input-daterange-datepicker" type="text" name="daterange" id="dateFilter" value="@ViewData["Now"] - @ViewData["Now"]" />
+                                    <input class="form-control form-control-line input-daterange-datepicker" type="text" name="daterange" id="dateFilter" value="@ViewData["Now"] - @ViewData["Now"]" />
                                 </div>
                             </div>
-                        </div>
-                        <br />
-                        <div class="row">
-                            <div class="col-md-4">
-                                <button type="button" class="btn btn-rounded btn-block btn-info" onclick="searchFromDate()">Get Data</button>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <h5 class="box-title m-t-30">Employee ID</h5>
+                                    <input class="form-control" type="tel" id="employeeId" placeholder="Employee ID"/>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <h5 class="box-title m-t-30">Department</h5>
+                                    <input class="form-control" type="tel" id="department" placeholder="Department" />
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="table-responsive m-t-40">
-                        <table id="tblMenuReport" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                        <table id="tblEmployeeReport" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Menus Name</th>
-                                    <th>Ice</th>
-                                    <th>Hot</th>
-                                    <th>Total</th>
+                                    <th>Employee Key</th>
+                                    <th>Employee Name</th>
+                                    <th>Department</th>
+                                    <th>Time</th>
+                                    <th>Vendor</th>
                                 </tr>
                             </thead>
                         </table>
@@ -61,6 +68,6 @@
     <!-- Date range Plugin JavaScript -->
     <script src="~/newtemplate/assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
     <script src="~/newtemplate/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <script src="~/js/tablemenujs.js"></script>
+    <script src="~/js/tableemployeejs.js"></script>
     <script src="~/newtemplate/assets/plugins/datatables/jquery.datatables.min.js"></script>
 }

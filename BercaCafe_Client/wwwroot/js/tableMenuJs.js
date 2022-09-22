@@ -71,6 +71,10 @@ $(document).ready(function () {
     }).draw();
 });
 
+$("#dateFilter").on('change', function () {    // 2nd way
+    searchFromDate();
+});
+
 function searchFromDate() {
     $('#tblMenuReport').DataTable().clear().draw();
     splitDate = $('#dateFilter').val().toString().split('-');
@@ -79,7 +83,7 @@ function searchFromDate() {
         "autoWidth": false,
         "responsive": true,
         "ajax": {
-            "url": "https://localhost:44331/api/Reports/ReportMenu?fromDate=" + splitDate[0].toString().trim().replaceAll('/', '-') + "&thruDate=" + splitDate[0].toString().trim().replaceAll('/', '-'),
+            "url": "https://localhost:44331/api/Reports/ReportMenu?fromDate=" + splitDate[0].toString().trim().replaceAll('/', '-') + "&thruDate=" + splitDate[1].toString().trim().replaceAll('/', '-'),
             "type": "GET",
             "dataType": "json",
             "dataSrc": "result",
