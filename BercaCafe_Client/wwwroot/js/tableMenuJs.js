@@ -6,11 +6,18 @@ $('.input-daterange-datepicker').daterangepicker({
     cancelClass: 'btn-inverse'
 });
 
+$(function () {
+    $('input[name="daterange"]').daterangepicker({
+        startDate: moment().startOf('month'),
+        endDate: moment(),
+        locale: {
+            format: 'MMM/DD/YYYY',
+
+        }
+    });
+});
 
 $(document).ready(function () {
-    var date = new Date();
-    date = new Date(date.getFullYear(), date.getMonth(), 1);
-    console.log(date.);
     splitDate = $('#dateFilter').val().toString().split('-');
     table = $('#tblMenuReport').DataTable({
         "paging": true,
