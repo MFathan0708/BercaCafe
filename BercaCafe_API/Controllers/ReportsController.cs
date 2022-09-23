@@ -63,5 +63,44 @@ namespace BercaCafe_API.Controllers
                 });
             }
         }
+
+        [HttpGet("ReportCup")]
+        public ActionResult Get(DateTime fromDate, DateTime thruDate)
+        {
+            var rCup = reportRepository.GetCup(fromDate, thruDate);
+
+            if (rCup.Count() != 0)
+            {
+                return StatusCode(200, new { StatusCode = HttpStatusCode.OK, message = "Data Ditemukan", result = rCup });
+            }
+            else
+            {
+
+                return StatusCode(404, new { StatusCode = HttpStatusCode.NotFound, message = "Data Tidak Ditemukan", result = rCup });
+            }
+        }
+
+        [HttpGet("DepartmentList")]
+        public ActionResult GetDepartment()
+        {
+            var dept = reportRepository.GetAllDepartment();
+            if (dept.Count() == 0)
+            {
+                return StatusCode(404, new
+                {
+                    status = HttpStatusCode.NotFound,
+                    message = "No data"
+                });
+            }
+            else
+            {
+                return StatusCode(200, new
+                {
+                    status = HttpStatusCode.OK,
+                    message = dept.Count() + " data found",
+                    result = dept
+                });
+            }
+        }
     }
 }

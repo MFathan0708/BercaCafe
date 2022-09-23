@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "Cup Report";
+    Layout = "~/Pages/Shared/_DashboardLayout.cshtml";
+    ViewData["Now"] = DateTime.Now.ToString("MM-dd-yyyy");
+    var date = DateTime.Today;
+    ViewData["FirstDate"] = new DateTime(date.Year, date.Month, 1).ToString("MM-dd-yyyy");
+}
+@section css{
+    <link href="~/newtemplate/assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+}
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Data Cup Report</h4>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 ">
+                                <div class="example">
+                                    <h5 class="box-title m-t-30">Filter by Date</h5>
+                                    <input class="form-control input-daterange-datepicker" type="text" name="daterange" id="dateFilter" value="@ViewData["FirstDate"] - @ViewData["Now"]" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive m-t-40">
+                        <table id="tblCupReport" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Employee Key</th>
+                                    <th>Employee Name</th>
+                                    <th>Department</th>
+                                    <th>Total Ice</th>
+                                    <th>Total Hot</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts{
+    <script src="~/newtemplate/assets/plugins/moment/moment.js"></script>
+    <!-- Date range Plugin JavaScript -->
+    <script src="~/newtemplate/assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="~/newtemplate/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="~/js/tablecupjs.js"></script>
+    <script src="~/newtemplate/assets/plugins/datatables/jquery.datatables.min.js"></script>
+}
+

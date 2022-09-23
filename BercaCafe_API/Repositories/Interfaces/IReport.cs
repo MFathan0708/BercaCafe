@@ -15,6 +15,8 @@ namespace APIDapper.Repositories.Interfaces
             string department,
             string employeeId
             );
+        IEnumerable<string> GetAllDepartment();
 
+        IEnumerable<ReportByCupVM> GetCup(DateTime fromDate, DateTime thruDate);
     }
 }

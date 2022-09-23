@@ -831,3 +831,4 @@ D:\Bootcamp\BercaCafe\BercaCafe_Client\bin\Debug\netcoreapp3.1\BercaCafe_API.pdb
 D:\Bootcamp\BercaCafe\BercaCafe_Client\obj\Debug\netcoreapp3.1\BercaCafe_Client.MvcApplicationPartsAssemblyInfo.cs
 D:\Bootcamp\BercaCafe\BercaCafe_Client\obj\Debug\netcoreapp3.1\Razor\Views\Reports\EmployeeReport.cshtml.g.cs
 D:\Bootcamp\BercaCafe\BercaCafe_Client\obj\Debug\netcoreapp3.1\Razor\Views\Reports\MenuReport.cshtml.g.cs
+D:\Bootcamp\BercaCafe\BercaCafe_Client\obj\Debug\netcoreapp3.1\Razor\Views\Reports\CupReport.cshtml.g.cs

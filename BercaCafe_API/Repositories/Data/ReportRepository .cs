@@ -52,5 +52,27 @@ namespace APIDapper.Repositories
                 return absen;
             }
         }
+        public IEnumerable<string> GetAllDepartment()
+        {
+            using (SqlConnection connection = new SqlConnection(_configuration["ConnectionStrings:BercaCafe"]))
+            {
+                var spName = "spDeptListNew";
+                var dept = connection.Query<string>(spName, commandType: CommandType.StoredProcedure);
+                return dept;
+            }
+        }
+
+        public IEnumerable<ReportByCupVM> GetCup(DateTime fromDate, DateTime thruDate)
+        {
+            using (SqlConnection connection = new SqlConnection(_configuration["ConnectionStrings:BercaCafe"]))
+            {
+                var spName = "spReportSummaryCupNew";
+                parameters.Add("@fromDate", fromDate);
+                parameters.Add("@thruDate", thruDate);
+                var cup = connection.Query<ReportByCupVM>(spName, parameters, commandType: CommandType.StoredProcedure);
+                return cup;
+
+            }
+        }
     }
 }

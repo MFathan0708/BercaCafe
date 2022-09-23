@@ -5,7 +5,7 @@ $('.input-daterange-datepicker').daterangepicker({
     applyClass: 'btn-danger',
     cancelClass: 'btn-inverse'
 });
-
+$(".select2").select2();
 $(function () {
     $('input[name="daterange"]').daterangepicker({
         startDate: moment().startOf('month'),
@@ -18,13 +18,24 @@ $(function () {
 });
 
 $(document).ready(function () {
+    $('#departmentSelector').empty();
+    $.ajax({
+        type: 'GET',
+        url: "https://localhost:44331/api/Reports/DepartmentList",
+        async: true,
+        success: function (data) {
+            $(data.result).each(function (_, i) {
+                $('#departmentSelector').append($('<option/>').val(i).text(i));
+            });
+        }
+    })
     splitDate = $('#dateFilter').val().toString().split('-');
     table = $('#tblEmployeeReport').DataTable({
         "paging": true,
         "autoWidth": false,
         "responsive": true,
         "ajax": {
-            "url": "https://localhost:44331/api/Reports/ReportEmployee?fromDate=" + splitDate[0].toString().trim().replaceAll('/', '-') + "&thruDate=" + splitDate[0].toString().trim().replaceAll('/', '-') + "&department=--ALL--&employeeId=38419",
+            "url": "https://localhost:44331/api/Reports/ReportEmployee/?fromDate=" + splitDate[0].toString().trim().replaceAll('/', '-') + "&thruDate=" + splitDate[0].toString().trim().replaceAll('/', '-') + "&department=--ALL--&employeeId=0",
             "type": "GET",
             "dataType": "json",
             "dataSrc": "result",
@@ -39,9 +50,12 @@ $(document).ready(function () {
         orderMulti: false,
         "columnDefs": [{
             "defaultContent": "-",
-            "targets": "_all"
+            "targets": "_all",
+            targets: [0, 5],
+            orderable: false,
+            searchable: false
         }],
-        order: ([[0, "asc"], [1, "asc"]]),
+        order: ([[0, "asc"], [2, "asc"]]),
         lengthMenu: [['10', '20', '50', '100', '-1'], ['10', '20', '50', '100', 'Show All']],
         dom: 'lBfrtip',
         columns: [
@@ -81,8 +95,12 @@ $("#dateFilter").on('change', function () {
     searchFromDate();
 });
 
+$("#departmentSelector").on('change', function () {
+    searchFromDate();
+});
+
 $("#employeeId").on('change', function () {
-    console.log("Ke ubah");
+    searchFromDate();
 });
 
 function searchFromDate() {
@@ -93,13 +111,12 @@ function searchFromDate() {
         "autoWidth": false,
         "responsive": true,
         "ajax": {
-            "url": "https://localhost:44331/api/Reports/ReportEmployee?fromDate=" + splitDate[0].toString().trim().replaceAll('/', '-') + "&thruDate=" + splitDate[1].toString().trim().replaceAll('/', '-') + "&department=--ALL--&employeeId=38419",
+            "url": "https://localhost:44331/api/Reports/ReportEmployee/?fromDate=" + splitDate[0].toString().trim().replaceAll('/', '-') + "&thruDate=" + splitDate[1].toString().trim().replaceAll('/', '-') + "&department=" + $('#departmentSelector').val().toString().replaceAll("&", "%26") + "&employeeId=" + $('#employeeId').val(),
             "type": "GET",
             "dataType": "json",
             "dataSrc": "result",
             async: true,
             error: function (data) {
-                console.log(data);
             }
         },
         "language": {
@@ -112,9 +129,12 @@ function searchFromDate() {
         orderMulti: false,
         "columnDefs": [{
             "defaultContent": "-",
-            "targets": "_all"
+            "targets": "_all",
+            targets: [0, 5],
+            orderable: false,
+            searchable: false
         }],
-        order: ([[0, "asc"], [1, "asc"]]),
+        order: ([[0, "asc"], [2, "asc"]]),
         lengthMenu: [['10', '20', '50', '100', '-1'], ['10', '20', '50', '100', 'Show All']],
         dom: 'lBfrtip',
         columns: [
