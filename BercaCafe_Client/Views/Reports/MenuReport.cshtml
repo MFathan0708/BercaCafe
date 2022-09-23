@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewData["Title"] = "Menu Report";
+    ViewData["Title"] = "Report by Menu";
     ViewData["Page"] = "Reports";
     Layout = "~/Pages/Shared/_DashboardLayout.cshtml";
     ViewData["Now"] = DateTime.Now.ToString("MM-dd-yyyy");
@@ -15,12 +15,12 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Data Menu Report</h4>
+                <h4 class="card-title">Report by Menu</h4>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4 ">
                             <div class="example">
-                                    <h5 class="box-title m-t-30">Filter by Date</h5>
+                                    <h5 class="box-title m-t-30">Date</h5>
                                     <input class="form-control input-daterange-datepicker" type="text" name="daterange" id="dateFilter" value="@ViewData["FirstDate"] - @ViewData["Now"]" />
                             </div>
                         </div>

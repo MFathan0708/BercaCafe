@@ -80,6 +80,30 @@ namespace BercaCafe_API.Controllers
             }
         }
 
+        [HttpGet("ReportDivisi")]
+        public ActionResult GetByDivisi(DateTime fromDate, DateTime thruDate)
+        {
+            var report = reportRepository.GetByDivisi(fromDate, thruDate);
+            if (report.Count() == 0)
+            {
+                return StatusCode(404, new
+                {
+                    status = HttpStatusCode.NotFound,
+                    message = "Tidak ada data"
+                });
+            }
+            else
+            {
+                return StatusCode(200, new
+                {
+                    status = HttpStatusCode.OK,
+                    message = report.Count() + " DATA ADA",
+                    result = report
+                });
+            }
+        }
+
+
         [HttpGet("DepartmentList")]
         public ActionResult GetDepartment()
         {

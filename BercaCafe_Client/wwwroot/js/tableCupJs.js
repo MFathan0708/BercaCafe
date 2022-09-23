@@ -60,10 +60,10 @@ $(document).ready(function () {
                 data: "divisionName"
             },
             {
-                data: "jmlIce"
+                data: "myCup"
             },
             {
-                data: "jmlHot"
+                data: "yourCup"
             }
         ],
     });
@@ -126,10 +126,10 @@ function searchFromDate() {
                 data: "divisionName"
             },
             {
-                data: "jmlIce"
+                data: "myCup"
             },
             {
-                data: "jmlHot"
+                data: "yourCup"
             }
         ],
     });

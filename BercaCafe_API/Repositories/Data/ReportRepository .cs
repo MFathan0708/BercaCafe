@@ -74,5 +74,17 @@ namespace APIDapper.Repositories
 
             }
         }
+
+        public IEnumerable<ReportDivisiVM> GetByDivisi(DateTime fromDate, DateTime thruDate)
+        {
+            using (SqlConnection connection = new SqlConnection(_configuration["ConnectionStrings:BercaCafe"]))
+            {
+                var spName = "spReportAbsenceByDivisiNew";
+                parameters.Add("@fromDate", fromDate);
+                parameters.Add("@thruDate", thruDate);
+                var absen = connection.Query<ReportDivisiVM>(spName, parameters, commandType: CommandType.StoredProcedure);
+                return absen;
+            }
+        }
     }
 }

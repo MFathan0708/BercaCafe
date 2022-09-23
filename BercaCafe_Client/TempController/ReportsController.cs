@@ -18,5 +18,10 @@ namespace BercaCafe_Client.TempController
         {
             return View();
         }
+
+        public IActionResult DivisionReport()
+        {
+            return View();
+        }
     }
 }

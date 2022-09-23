@@ -18,5 +18,10 @@ namespace APIDapper.Repositories.Interfaces
         IEnumerable<string> GetAllDepartment();
 
         IEnumerable<ReportByCupVM> GetCup(DateTime fromDate, DateTime thruDate);
+
+        public IEnumerable<ReportDivisiVM> GetByDivisi(
+            DateTime fromDate,
+            DateTime thruDate
+            );
     }
 }
