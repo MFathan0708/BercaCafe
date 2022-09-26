@@ -131,13 +131,13 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Dashboard</h3>
+                    <h3 class="text-themecolor">@ViewData["Title"]</h3>
                 </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                         @if (@ViewData["Page"] != null)
-                       {
+                        {
                             <li class="breadcrumb-item active">@ViewData["Page"]</li>
                         }
                         <li class="breadcrumb-item active">@ViewData["Title"]</li>
@@ -196,7 +196,8 @@
     <script src="~/newtemplate/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
     <!--Custom JavaScript -->
     <script src="~/newtemplate/js/custom.min.js"></script>
-
+    <script src="~/js/exporttoexcel.js"></script>
+    <script src="~/js/filesaver.js"></script>
     <!-- ============================================================== -->
     <!-- This page plugins -->
     <!-- ============================================================== -->
@@ -207,13 +208,6 @@
     <!-- Style switcher -->
     <!-- ============================================================== -->
     <script src="~/newtemplate/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
-    <script>
-        $(document).ready(function (){
-            $('#animationSandbox').removeClass().addClass('rubberBand animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
-                $(this).removeClass();
-            });
-        })
-    </script>
 </body>
 
 </html>

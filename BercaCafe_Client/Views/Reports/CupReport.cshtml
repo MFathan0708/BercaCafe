@@ -23,18 +23,21 @@
                                     <input class="form-control input-daterange-datepicker" type="text" name="daterange" id="dateFilter" value="@ViewData["FirstDate"] - @ViewData["Now"]" />
                                 </div>
                             </div>
+                            <div class="col-md-4 ">
+                                <button type="button" class="btn waves-effect waves-light btn-rounded btn-success" onclick="javascript: exportToExcel('tblCupReport', 'data', 'Cup Report')">Export to Excel</button>
+                            </div>
                         </div>
                     </div>
                     <div class="table-responsive m-t-40">
-                        <table id="tblCupReport" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                        <table id="tblCupReport" class="display nowrap table table-bordered" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>Division</th>
                                     <th>Employee Key</th>
                                     <th>Employee Name</th>
-                                    <th>Department</th>
-                                    <th>My Cup</th>
-                                    <th>Your Cup</th>
+                                    <th>Employee Cup</th>
+                                    <th>Berca Cup</th>
                                 </tr>
                             </thead>
                         </table>
@@ -51,5 +54,6 @@
     <script src="~/newtemplate/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
     <script src="~/js/tablecupjs.js"></script>
     <script src="~/newtemplate/assets/plugins/datatables/jquery.datatables.min.js"></script>
+    <script src="~/newtemplate/assets/plugins/datatables/datatables.rowsgroup.js"></script>
 }
 

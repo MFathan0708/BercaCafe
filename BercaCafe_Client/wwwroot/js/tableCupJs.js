@@ -42,6 +42,7 @@ $(document).ready(function () {
             "targets": "_all"
         }],
         order: ([[0, "asc"], [1, "asc"]]),
+        //'rowsGroup': [1],
         lengthMenu: [['10', '20', '50', '100', '-1'], ['10', '20', '50', '100', 'Show All']],
         dom: 'lBfrtip',
         columns: [
@@ -51,13 +52,13 @@ $(document).ready(function () {
                 }
             },
             {
+                data: "divisionName"
+            },
+            {
                 data: "employeeKey"
             },
             {
                 data: "name"
-            },
-            {
-                data: "divisionName"
             },
             {
                 data: "myCup"
@@ -117,13 +118,13 @@ function searchFromDate() {
                 }
             },
             {
+                data: "divisionName"
+            },
+            {
                 data: "employeeKey"
             },
             {
                 data: "name"
-            },
-            {
-                data: "divisionName"
             },
             {
                 data: "myCup"

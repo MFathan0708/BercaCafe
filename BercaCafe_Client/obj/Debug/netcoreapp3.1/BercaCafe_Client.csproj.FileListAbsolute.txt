@@ -833,3 +833,5 @@ D:\Bootcamp\BercaCafe\BercaCafe_Client\obj\Debug\netcoreapp3.1\Razor\Views\Repor
 D:\Bootcamp\BercaCafe\BercaCafe_Client\obj\Debug\netcoreapp3.1\Razor\Views\Reports\MenuReport.cshtml.g.cs
 D:\Bootcamp\BercaCafe\BercaCafe_Client\obj\Debug\netcoreapp3.1\Razor\Views\Reports\CupReport.cshtml.g.cs
 D:\Bootcamp\BercaCafe\BercaCafe_Client\obj\Debug\netcoreapp3.1\Razor\Views\Reports\DivisionReport.cshtml.g.cs
+D:\repos\BercaCafe\BercaCafe_Client\obj\Debug\netcoreapp3.1\Razor\Views\Reports\CupReport.cshtml.g.cs
+D:\repos\BercaCafe\BercaCafe_Client\obj\Debug\netcoreapp3.1\Razor\Views\Reports\DivisionReport.cshtml.g.cs

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Bootcamp\\BercaCafe\\BercaCafe_API\\BercaCafe_API.csproj": {}
+    "D:\\repos\\BercaCafe\\BercaCafe_API\\BercaCafe_API.csproj": {}
   },
   "projects": {
-    "D:\\Bootcamp\\BercaCafe\\BercaCafe_API\\BercaCafe_API.csproj": {
+    "D:\\repos\\BercaCafe\\BercaCafe_API\\BercaCafe_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Bootcamp\\BercaCafe\\BercaCafe_API\\BercaCafe_API.csproj",
+        "projectUniqueName": "D:\\repos\\BercaCafe\\BercaCafe_API\\BercaCafe_API.csproj",
         "projectName": "BercaCafe_API",
-        "projectPath": "D:\\Bootcamp\\BercaCafe\\BercaCafe_API\\BercaCafe_API.csproj",
-        "packagesPath": "C:\\Users\\mfath\\.nuget\\packages\\",
-        "outputPath": "D:\\Bootcamp\\BercaCafe\\BercaCafe_API\\obj\\",
+        "projectPath": "D:\\repos\\BercaCafe\\BercaCafe_API\\BercaCafe_API.csproj",
+        "packagesPath": "C:\\Users\\muhammad.madenda\\.nuget\\packages\\",
+        "outputPath": "D:\\repos\\BercaCafe\\BercaCafe_API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\mfath\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\muhammad.madenda\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

@@ -1,0 +1,19 @@
+https://www.youtube.com/watch?v=2qHS2awOHVw
+
+Export Data ke Excel
+
+Membuat per division pada Report By Cup
+
+Setiap report ada summary nya di dalam satu halaman
+
+- Untuk dapat membuka page Dashboard / Menu, diharuskan melakukan submit order
+
+Flow Order :
+
+1. Di home page (bukan dashboard), tapping > muncul data karyawan :
+Object : TextBox untuk input jumlah kopi, tombol choose your menu, label untuk informasi karyawan
+
+Ketentuan :
+- TextBox Jumlah Kopi : - Diawal berisi value 1 dan disable tidak dapat diubah (Untuk karyawan biasa)
+			- Jika yang ditapping menggunakan kartu khusus, dapat di edit textbox nya
+
