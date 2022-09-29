@@ -42,7 +42,7 @@ namespace APIDapper.Repositories
         {
             using (SqlConnection connection = new SqlConnection(_configuration["ConnectionStrings:BercaCafe"]))
             {
-                var spName = "spReportAbsence";
+                var spName = "spReportAbsenceNew";
                 parameters.Add("@fromDate", fromDate);
                 parameters.Add("@thruDate", thruDate);
                 parameters.Add("@VendorID", "7");
@@ -67,6 +67,19 @@ namespace APIDapper.Repositories
             using (SqlConnection connection = new SqlConnection(_configuration["ConnectionStrings:BercaCafe"]))
             {
                 var spName = "spReportSummaryCupNew";
+                parameters.Add("@fromDate", fromDate);
+                parameters.Add("@thruDate", thruDate);
+                var cup = connection.Query<ReportByCupVM>(spName, parameters, commandType: CommandType.StoredProcedure);
+                return cup;
+
+            }
+        }
+
+        public IEnumerable<ReportByCupVM> GetCupByDivision(DateTime fromDate, DateTime thruDate)
+        {
+            using (SqlConnection connection = new SqlConnection(_configuration["ConnectionStrings:BercaCafe"]))
+            {
+                var spName = "spReportSummaryCupByDivision";
                 parameters.Add("@fromDate", fromDate);
                 parameters.Add("@thruDate", thruDate);
                 var cup = connection.Query<ReportByCupVM>(spName, parameters, commandType: CommandType.StoredProcedure);

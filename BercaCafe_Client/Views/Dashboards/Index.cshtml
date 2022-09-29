@@ -9,168 +9,128 @@
 
 <!-- Row -->
 
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="exampleModalLabel1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel1">New Order</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="skin skin-square">
+                            <div class="form-group">
+                                <label>Jenis : </label>
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <input tabindex="7" type="radio" class="check" id="radioIce" name="radioType" data-radio="iradio_square-red" value="tes">
+                                        <label for="radioIce">Ice</label>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <input tabindex="8" type="radio" class="check" id="radioHot" name="radioType" data-radio="iradio_square-red" value="tess">
+                                        <label for="radioHot">Hot</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Milk : </label>
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <input tabindex="7" type="radio" class="check" id="radioNoMilk" name="radioMilk" data-radio="iradio_square-red" value="">
+                                        <label for="radioNoMilk">No Milk</label>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <input tabindex="7" type="radio" class="check" id="radioLessMilk" name="radioMilk" data-radio="iradio_square-red" value="">
+                                        <label for="radioLessMilk">Less Milk</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <input tabindex="7" type="radio" class="check" id="radioNormalMilk" name="radioMilk" data-radio="iradio_square-red" value="">
+                                        <label for="radioNormalMilk">Normal Milk</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Coffee : </label>
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <input tabindex="7" type="radio" class="check" id="radioNoCoffee" name="radioCoffee" data-radio="iradio_square-red" value="">
+                                        <label for="radioNoCoffee">No Coffee</label>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <input tabindex="7" type="radio" class="check" id="radioLessCoffee" name="radioCoffee" data-radio="iradio_square-red" value="">
+                                        <label for="radioLessCoffee">Less Coffee</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <input tabindex="7" type="radio" class="check" id="radioNormalCoffee" name="radioCoffee" data-radio="iradio_square-red" value="">
+                                        <label for="radioNormalCoffee">Normal Coffee</label>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <input tabindex="7" type="radio" class="check" id="radioExtraShot" name="radioCoffee" data-radio="iradio_square-red" value="">
+                                        <label for="radioExtraShot">Extra Shot</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Sugar : </label>
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <input tabindex="7" type="radio" class="check" id="radioNoSugar" name="radioSugar" data-radio="iradio_square-red" value="">
+                                        <label for="radioNoSugar">No Sugar</label>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input tabindex="7" type="radio" class="check" id="radioLessSugar" name="radioSugar" data-radio="iradio_square-red" value="">
+                                        <label for="radioLessSugar">Less Sugar</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <input tabindex="7" type="radio" class="check" id="radioNormalSugar" name="radioSugar" data-radio="iradio_square-red" value="">
+                                        <label for="radioNormalSugar">Normal Sugar</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-rounded" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-rounded" onclick="createOrder()">Create Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row el-element-overlay">
         <div class="col-md-12">
             <h4 class="card-title"><b>Choose Menu</b></h4>
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="exampleModalLabel1">New Order</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="skin skin-square">
-                                <div class="form-group">
-                                    <label>Jenis : </label>
-                                    <div class="input-group">
-                                        <ul class="icheck-list">
-                                            <li>
-                                                <input tabindex="7" type="radio" class="check" id="radioIce" name="radioType" data-radio="iradio_square-red">
-                                                <label for="radioIce">Ice</label>
-                                            </li>
-                                            <li>
-                                                <input tabindex="8" type="radio" class="check" id="radioHot" name="radioType" data-radio="iradio_square-red">
-                                                <label for="radioHot">Hot</label>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <label>Milk : </label>
-                                    <div class="input-group">
-                                        <ul class="icheck-list">
-                                            <li>
-                                                <input tabindex="7" type="radio" class="check" id="radioNoMilk" name="radioMilk" data-radio="iradio_square-red">
-                                                <label for="radioNoMilk">No Milk</label>
-                                            </li>
-                                            <li>
-                                                <input tabindex="7" type="radio" class="check" id="radioLessMilk" name="radioMilk" data-radio="iradio_square-red">
-                                                <label for="radioLessMilk">Less Milk</label>
-                                            </li>
-                                            <li>
-                                                <input tabindex="7" type="radio" class="check" id="radioNormalMilk" name="radioMilk" data-radio="iradio_square-red">
-                                                <label for="radioNormalMilk">Normal Milk</label>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <label>Coffee : </label>
-                                    <div class="input-group">
-                                        <ul class="icheck-list">
-                                            <li>
-                                                <input tabindex="7" type="radio" class="check" id="radioNoCoffee" name="radioCoffee" data-radio="iradio_square-red">
-                                                <label for="radioNoCoffee">No Coffee</label>
-                                            </li>
-                                            <li>
-                                                <input tabindex="7" type="radio" class="check" id="radioLessCoffee" name="radioCoffee" data-radio="iradio_square-red">
-                                                <label for="radioLessCoffee">Less Coffee</label>
-                                            </li>
-                                            <li>
-                                                <input tabindex="7" type="radio" class="check" id="radioNormalCoffee" name="radioCoffee" data-radio="iradio_square-red">
-                                                <label for="radioNormalCoffee">Normal Coffee</label>
-                                            </li>
-                                            <li>
-                                                <input tabindex="7" type="radio" class="check" id="radioExtraShot" name="radioCoffee" data-radio="iradio_square-red">
-                                                <label for="radioExtraShot">Extra Shot</label>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <label>Sugar : </label>
-                                    <div class="input-group">
-                                        <ul class="icheck-list">
-                                            <li>
-                                                <input tabindex="7" type="radio" class="check" id="radioNoSugar" name="radioSugar" data-radio="iradio_square-red">
-                                                <label for="radioNoSugar">No Sugar</label>
-                                            </li>
-                                            <li>
-                                                <input tabindex="7" type="radio" class="check" id="radioLessSugar" name="radioSugar" data-radio="iradio_square-red">
-                                                <label for="radioLessSugar">Less Sugar</label>
-                                            </li>
-                                            <li>
-                                                <input tabindex="7" type="radio" class="check" id="radioNormalSugar" name="radioSugar" data-radio="iradio_square-red">
-                                                <label for="radioNormalSugar">Normal Sugar</label>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+        
+        @if (ViewBag.Data != null){
+        @foreach (var item in ViewBag.Data)
+        {
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="el-card-item">
+                        <div class="el-card-avatar el-overlay-1">
+                            <img src="@item.imageUrl" alt="user" style="width: 600px; height:200px;" />
+                            <div class="el-overlay">
+                                <ul class="el-info">
+                                    <li><a id="btnCek" class="btn default btn-outline" onclick="clickShowModal('@item.menuName', @item.menuID)"><i class="icon-plus"></i></a></li>
+                                </ul>
                             </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default btn-rounded" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary btn-rounded">Create Order</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="card">
-                <div class="el-card-item">
-                    <div class="el-card-avatar el-overlay-1">
-                        <img src="~/newtemplate/assets/images/gallery/banana.png" alt="user" />
-                        <div class="el-overlay">
-                            <ul class="el-info">
-                                <li><a id="btnCek" class="btn default btn-outline" onclick="clickShowModal('Banana Coffee')"><i class="icon-plus"></i></a></li>
-                            </ul>
+                        </div>
+                        <div class="el-card-content">
+                            <h3 class="box-title">@item.menuName</h3>
                         </div>
                     </div>
-                    <div class="el-card-content">
-                        <h3 class="box-title">Banana Coffee</h3>
-                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="card">
-                <div class="el-card-item">
-                    <div class="el-card-avatar el-overlay-1">
-                        <img src="~/newtemplate/assets/images/gallery/banana.png" alt="user" />
-                        <div class="el-overlay">
-                            <ul class="el-info">
-                                <li><a class="btn default btn-outline" onclick="clickShowModal('Latte Coffee')"><i class="icon-plus"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="el-card-content">
-                        <h3 class="box-title">Banana Coffee</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="card">
-                <div class="el-card-item">
-                    <div class="el-card-avatar el-overlay-1">
-                        <img src="~/newtemplate/assets/images/gallery/banana.png" alt="user" />
-                        <div class="el-overlay">
-                            <ul class="el-info">
-                                <li><a class="btn default btn-outline" onclick="clickShowModal('Americano Coffee')"><i class="icon-plus"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="el-card-content">
-                        <h3 class="box-title">Banana Coffee</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="card">
-                <div class="el-card-item">
-                    <div class="el-card-avatar el-overlay-1">
-                        <img src="~/newtemplate/assets/images/gallery/banana.png" alt="user" />
-                        <div class="el-overlay">
-                            <ul class="el-info">
-                                <li><a class="btn default btn-outline" onclick="clickShowModal('Cappucino Coffee')"><i class="icon-plus"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="el-card-content">
-                        <h3 class="box-title">Banana Coffee</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
+        }
+        }
     </div>
 
 @section Scripts{
@@ -178,11 +138,5 @@
     <script src="~/newtemplate/assets/plugins/magnific-popup-master/dist/jquery.magnific-popup-init.js"></script>
     <script src="~/newtemplate/assets/plugins/icheck/icheck.init.js"></script>
     <script src="~/newtemplate/assets/plugins/icheck/icheck.min.js"></script>
-    <script src="~/newtemplate/js/dashboard1.js"></script>
-    <script>
-        function clickShowModal(name, dataId) {
-            $('#exampleModalLabel1').text('New Order - ' + name);
-            $('#exampleModal').modal('show');
-        }
-    </script>
+    <script src="~/js/orderdashboardjs.js"></script>
 }

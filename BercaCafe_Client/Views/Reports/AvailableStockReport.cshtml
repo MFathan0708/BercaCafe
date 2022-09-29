@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewData["Title"] = "Available Stock Report";
+    ViewData["Page"] = "Reports";
+    Layout = "~/Pages/Shared/_DashboardLayout.cshtml";
+    ViewData["Now"] = DateTime.Now.ToString("MM-dd-yyyy");
+    var date = DateTime.Today;
+    ViewData["FirstDate"] = new DateTime(date.Year, date.Month, 1).ToString("MM-dd-yyyy");
+}
+
+@section css{
+    <link href="~/newtemplate/assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="~/newtemplate/newdt/datatables-bs4/css/datatables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/newtemplate/newdt/datatables-responsive/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/newtemplate/newdt/datatables-buttons/css/buttons.bootstrap4.min.css" rel="stylesheet" />
+
+}
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Report by Available Stock</h4>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 ">
+                                <div class="example">
+                                    <h5 class="box-title m-t-30">Date</h5>
+                                    <input class="form-control input-daterange-datepicker" type="text" name="daterange" id="dateFilter" value="@ViewData["FirstDate"] - @ViewData["Now"]" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive m-t-40">
+                        <table id="tblAvailableStockReport" class="display nowrap table table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Materials Name</th>
+                                    <th>Stock</th>
+                                    <th>Input Date</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts{
+    <script src="~/newtemplate/assets/plugins/moment/moment.js"></script>
+    <!-- Date range Plugin JavaScript -->
+    <script src="~/newtemplate/assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="~/newtemplate/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="~/js/tableavailablestockjs.js"></script>
+    <script src="~/newtemplate/newdt/datatables/jquery.datatables.min.js"></script>
+    <script src="~/newtemplate/newdt/datatables-bs4/js/datatables.bootstrap4.min.js"></script>
+    <script src="~/newtemplate/newdt/datatables-responsive/js/datatables.responsive.min.js"></script>
+    <script src="~/newtemplate/newdt/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/newtemplate/newdt/datatables-buttons/js/datatables.buttons.min.js"></script>
+    <script src="~/newtemplate/newdt/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/newtemplate/newdt/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/newtemplate/newdt/datatables-buttons/js/buttons.colvis.min.js"></script>
+    <script src="~/newtemplate/newdt/datatables-rowgroup/js/datatables.rowgroup.min.js"></script>
+    <script src="~/newtemplate/newdt/jszip/jszip.min.js"></script>
+    }
+

@@ -6,21 +6,30 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace BercaCafe_API.Models
 {
-    public partial class bercacafeContext : DbContext
+    public partial class BercaCafeContext : DbContext
     {
-        public bercacafeContext()
+        public BercaCafeContext()
         {
         }
 
-        public bercacafeContext(DbContextOptions<bercacafeContext> options)
+        public BercaCafeContext(DbContextOptions<BercaCafeContext> options)
             : base(options)
         {
         }
 
-        public virtual DbSet<AttrepApplyException> AttrepApplyExceptions { get; set; }
-        public virtual DbSet<AttrepChangesBf4d335d7a4fd2c7> AttrepChangesBf4d335d7a4fd2c7s { get; set; }
+        public virtual DbSet<AddComposition> AddCompositions { get; set; }
+        public virtual DbSet<Composition> Compositions { get; set; }
+        public virtual DbSet<CompositionType> CompositionTypes { get; set; }
+        public virtual DbSet<CupComposition> CupCompositions { get; set; }
+        public virtual DbSet<Hrddirektorat> Hrddirektorats { get; set; }
+        public virtual DbSet<Hrddivision> Hrddivisions { get; set; }
+        public virtual DbSet<Hrdemployee1> Hrdemployee1s { get; set; }
+        public virtual DbSet<Hrdemployee2> Hrdemployee2s { get; set; }
+        public virtual DbSet<Material> Materials { get; set; }
+        public virtual DbSet<MaterialsLog> MaterialsLogs { get; set; }
         public virtual DbSet<MsEmployee> MsEmployees { get; set; }
         public virtual DbSet<MsEmployeeBackup> MsEmployeeBackups { get; set; }
+        public virtual DbSet<MsMenuImageUrlNew> MsMenuImageUrlNews { get; set; }
         public virtual DbSet<MsUdc> MsUdcs { get; set; }
         public virtual DbSet<PsJob> PsJobs { get; set; }
         public virtual DbSet<ScAbsen> ScAbsens { get; set; }
@@ -32,7 +41,7 @@ namespace BercaCafe_API.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("server=PDEV-Rifqi;database=bercacafe;trusted_connection=true;");
+                optionsBuilder.UseSqlServer("Server=RDA-MADENDA;Database=BercaCafe;Trusted_Connection=True;");
             }
         }
 
@@ -40,77 +49,486 @@ namespace BercaCafe_API.Models
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
-            modelBuilder.Entity<AttrepApplyException>(entity =>
+            modelBuilder.Entity<AddComposition>(entity =>
+            {
+                entity.HasKey(e => e.AddCompId)
+                    .HasName("PK__Add_Comp__69CF316D0A07DFA1");
+
+                entity.ToTable("Add_Composition");
+
+                entity.Property(e => e.AddCompId).HasColumnName("AddCompID");
+
+                entity.Property(e => e.AddId).HasColumnName("AddID");
+
+                entity.Property(e => e.CompTypeId).HasColumnName("CompTypeID");
+
+                entity.HasOne(d => d.CompType)
+                    .WithMany(p => p.AddCompositions)
+                    .HasForeignKey(d => d.CompTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Add_Compo__CompT__61716316");
+            });
+
+            modelBuilder.Entity<Composition>(entity =>
+            {
+                entity.HasKey(e => e.CompId)
+                    .HasName("PK__Composit__AD362A768E12FA86");
+
+                entity.ToTable("Composition");
+
+                entity.Property(e => e.CompId).HasColumnName("CompID");
+
+                entity.Property(e => e.CompTypeId).HasColumnName("CompTypeID");
+
+                entity.Property(e => e.MenuId).HasColumnName("MenuID");
+
+                entity.HasOne(d => d.CompType)
+                    .WithMany(p => p.Compositions)
+                    .HasForeignKey(d => d.CompTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Compositi__CompT__644DCFC1");
+            });
+
+            modelBuilder.Entity<CompositionType>(entity =>
+            {
+                entity.HasKey(e => e.CompTypeId)
+                    .HasName("PK__Composit__A42CAD9075A3F331");
+
+                entity.ToTable("CompositionType");
+
+                entity.Property(e => e.CompTypeId).HasColumnName("CompTypeID");
+
+                entity.Property(e => e.CompUnit)
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.TypeName)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<CupComposition>(entity =>
+            {
+                entity.HasKey(e => e.CupCompId)
+                    .HasName("PK__Cup_Comp__6F91274643624000");
+
+                entity.ToTable("Cup_Composition");
+
+                entity.Property(e => e.CupCompId).HasColumnName("CupCompID");
+
+                entity.Property(e => e.CompTypeId).HasColumnName("CompTypeID");
+
+                entity.Property(e => e.CupId).HasColumnName("CupID");
+
+                entity.HasOne(d => d.CompType)
+                    .WithMany(p => p.CupCompositions)
+                    .HasForeignKey(d => d.CompTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Cup_Compo__CompT__5E94F66B");
+            });
+
+            modelBuilder.Entity<Hrddirektorat>(entity =>
+            {
+                entity.HasKey(e => e.DirektoratKey);
+
+                entity.ToTable("HRDDirektorat");
+
+                entity.Property(e => e.DirektoratKey)
+                    .HasMaxLength(15)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedBy)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedId).HasColumnName("CreatedID");
+
+                entity.Property(e => e.CreatedIn)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedTime).HasColumnType("datetime");
+
+                entity.Property(e => e.DirektoratAlias)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.DirektoratName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Freceive).HasColumnName("FReceive");
+
+                entity.Property(e => e.Fsend).HasColumnName("FSend");
+
+                entity.Property(e => e.LastModify).HasColumnType("datetime");
+
+                entity.Property(e => e.LastModifyId).HasColumnName("LastModifyID");
+
+                entity.Property(e => e.LastModifyName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ModifiedBy)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ModifiedIn)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
+
+                entity.Property(e => e.ReceiveBy)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ReceiveFile)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ReceiveIn)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ReceiveTime).HasColumnType("datetime");
+
+                entity.Property(e => e.SendBy)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.SendFile)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.SendIn)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.SendTime).HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<Hrddivision>(entity =>
+            {
+                entity.HasKey(e => e.DivisionKey);
+
+                entity.ToTable("HRDDivision");
+
+                entity.Property(e => e.DivisionKey).ValueGeneratedNever();
+
+                entity.Property(e => e.CreatedBy)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedId).HasColumnName("CreatedID");
+
+                entity.Property(e => e.CreatedIn)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedName).HasMaxLength(255);
+
+                entity.Property(e => e.CreatedTime).HasColumnType("datetime");
+
+                entity.Property(e => e.DivisionAlias).HasMaxLength(255);
+
+                entity.Property(e => e.DivisionName).HasMaxLength(255);
+
+                entity.Property(e => e.Freceive).HasColumnName("FReceive");
+
+                entity.Property(e => e.Fsend).HasColumnName("FSend");
+
+                entity.Property(e => e.LastModify).HasColumnType("datetime");
+
+                entity.Property(e => e.LastModifyId).HasColumnName("LastModifyID");
+
+                entity.Property(e => e.LastModifyName).HasMaxLength(255);
+
+                entity.Property(e => e.ModifiedBy)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ModifiedIn)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
+
+                entity.Property(e => e.ReceiveBy)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ReceiveFile)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ReceiveIn)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ReceiveTime).HasColumnType("datetime");
+
+                entity.Property(e => e.SendBy)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.SendFile)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.SendIn)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.SendTime).HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<Hrdemployee1>(entity =>
             {
                 entity.HasNoKey();
 
-                entity.ToTable("attrep_apply_exceptions");
+                entity.ToTable("HRDEmployee1");
 
-                entity.Property(e => e.Error)
+                entity.Property(e => e.AbsenKey)
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Address)
+                    .HasMaxLength(250)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Birthdate).HasColumnType("datetime");
+
+                entity.Property(e => e.Birthplace)
+                    .HasMaxLength(250)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Blood)
+                    .HasMaxLength(2)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CarAllowance)
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.City)
+                    .HasMaxLength(250)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ContractFrom).HasColumnType("datetime");
+
+                entity.Property(e => e.ContractTo).HasColumnType("datetime");
+
+                entity.Property(e => e.Country)
+                    .HasMaxLength(250)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedBy)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedId).HasColumnName("CreatedID");
+
+                entity.Property(e => e.CreatedIn)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedTime).HasColumnType("datetime");
+
+                entity.Property(e => e.DateHired).HasColumnType("datetime");
+
+                entity.Property(e => e.DateResign).HasColumnType("datetime");
+
+                entity.Property(e => e.EmailAddr)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Extension)
+                    .HasMaxLength(4)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Freceive)
+                    .HasMaxLength(1)
                     .IsUnicode(false)
-                    .HasColumnName("ERROR");
+                    .HasColumnName("FReceive")
+                    .IsFixedLength(true);
 
-                entity.Property(e => e.ErrorTime)
-                    .HasPrecision(3)
-                    .HasColumnName("ERROR_TIME");
-
-                entity.Property(e => e.Statement)
+                entity.Property(e => e.Fsend)
+                    .HasMaxLength(1)
                     .IsUnicode(false)
-                    .HasColumnName("STATEMENT");
+                    .HasColumnName("FSend")
+                    .IsFixedLength(true);
 
-                entity.Property(e => e.TableName)
-                    .IsRequired()
-                    .HasMaxLength(128)
-                    .IsUnicode(false)
-                    .HasColumnName("TABLE_NAME");
+                entity.Property(e => e.Gender)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.TableOwner)
-                    .IsRequired()
-                    .HasMaxLength(128)
-                    .IsUnicode(false)
-                    .HasColumnName("TABLE_OWNER");
+                entity.Property(e => e.HomePhone)
+                    .HasMaxLength(15)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.TaskName)
-                    .IsRequired()
-                    .HasMaxLength(128)
+                entity.Property(e => e.Itasset)
+                    .HasMaxLength(100)
                     .IsUnicode(false)
-                    .HasColumnName("TASK_NAME");
+                    .HasColumnName("ITAsset");
+
+                entity.Property(e => e.JobTitle)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.LastModifyDate).HasColumnType("datetime");
+
+                entity.Property(e => e.LastModifyId).HasColumnName("LastModifyID");
+
+                entity.Property(e => e.LastModifyName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.MaritalStatus)
+                    .HasMaxLength(8)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.MaritalStatusExPettyCash)
+                    .HasMaxLength(1)
+                    .IsUnicode(false)
+                    .IsFixedLength(true);
+
+                entity.Property(e => e.MobilePhone)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ModifiedBy)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ModifiedIn)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ModifiedTime).HasColumnType("datetime");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.NoKtp)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("NoKTP");
+
+                entity.Property(e => e.Note)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ReceiveBy)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ReceiveFile)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ReceiveIn)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ReceiveTime).HasColumnType("datetime");
+
+                entity.Property(e => e.SendBy)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.SendFile)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.SendIn)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.SendTime).HasColumnType("datetime");
+
+                entity.Property(e => e.SpouseName)
+                    .HasMaxLength(225)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.TaxStatus)
+                    .HasMaxLength(5)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Zip)
+                    .HasMaxLength(5)
+                    .IsUnicode(false);
             });
 
-            modelBuilder.Entity<AttrepChangesBf4d335d7a4fd2c7>(entity =>
+            modelBuilder.Entity<Hrdemployee2>(entity =>
             {
-                entity.HasKey(e => e.Seq)
-                    .HasName("PK__attrep_c__DDDFBCBE6E11CA64");
+                entity.HasKey(e => e.EmployeeKey);
 
-                entity.ToTable("attrep_changesBF4D335D7A4FD2C7");
+                entity.ToTable("HRDEmployee2");
 
-                entity.Property(e => e.Seq)
-                    .ValueGeneratedNever()
-                    .HasColumnName("seq");
+                entity.Property(e => e.EmployeeKey).ValueGeneratedNever();
 
-                entity.Property(e => e.Col1)
-                    .HasMaxLength(24)
-                    .HasColumnName("col1");
+                entity.Property(e => e.Name)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+            });
 
-                entity.Property(e => e.Col2)
-                    .HasMaxLength(24)
-                    .HasColumnName("col2");
+            modelBuilder.Entity<Material>(entity =>
+            {
+                entity.HasKey(e => e.MaterialsId)
+                    .HasName("PK__Material__394B877F7C115207");
 
-                entity.Property(e => e.Col3)
-                    .HasMaxLength(20)
-                    .HasColumnName("col3");
+                entity.Property(e => e.MaterialsId).HasColumnName("MaterialsID");
 
-                entity.Property(e => e.Col4)
-                    .HasMaxLength(20)
-                    .HasColumnName("col4");
+                entity.Property(e => e.InputDate).HasColumnType("date");
 
-                entity.Property(e => e.Col5)
-                    .HasMaxLength(20)
-                    .HasColumnName("col5");
+                entity.Property(e => e.LogId).HasColumnName("LogID");
 
-                entity.Property(e => e.Seg1)
-                    .HasMaxLength(20)
-                    .HasColumnName("seg1");
+                entity.HasOne(d => d.Log)
+                    .WithMany(p => p.Materials)
+                    .HasForeignKey(d => d.LogId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Materials__LogID__2FA4FD58");
+            });
+
+            modelBuilder.Entity<MaterialsLog>(entity =>
+            {
+                entity.HasKey(e => e.LogId)
+                    .HasName("PK__Material__5E5499A8251E269B");
+
+                entity.ToTable("Materials_Log");
+
+                entity.Property(e => e.LogId).HasColumnName("LogID");
+
+                entity.Property(e => e.CompTypeId).HasColumnName("CompTypeID");
+
+                entity.Property(e => e.InputDate).HasColumnType("datetime");
+
+                entity.Property(e => e.MaterialsName)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.MaterialsUnit)
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.CompType)
+                    .WithMany(p => p.MaterialsLogs)
+                    .HasForeignKey(d => d.CompTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Materials__CompT__2CC890AD");
             });
 
             modelBuilder.Entity<MsEmployee>(entity =>
@@ -175,6 +593,23 @@ namespace BercaCafe_API.Models
                     .HasColumnName("Hire_DT");
 
                 entity.Property(e => e.TerminationDt).HasColumnType("date");
+            });
+
+            modelBuilder.Entity<MsMenuImageUrlNew>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("Ms_Menu_ImageURL_New");
+
+                entity.Property(e => e.LinkUrl).IsUnicode(false);
+
+                entity.Property(e => e.MenuId).HasColumnName("MenuID");
+
+                entity.HasOne(d => d.Menu)
+                    .WithMany()
+                    .HasForeignKey(d => d.MenuId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Ms_Menu_I__MenuI__03C67B1A");
             });
 
             modelBuilder.Entity<MsUdc>(entity =>

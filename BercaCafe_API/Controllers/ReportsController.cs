@@ -80,6 +80,22 @@ namespace BercaCafe_API.Controllers
             }
         }
 
+        [HttpGet("ReportCupByDivision")]
+        public ActionResult GetCupByDivision(DateTime fromDate, DateTime thruDate)
+        {
+            var rCup = reportRepository.GetCupByDivision(fromDate, thruDate);
+
+            if (rCup.Count() != 0)
+            {
+                return StatusCode(200, new { StatusCode = HttpStatusCode.OK, message = "Data Ditemukan", result = rCup });
+            }
+            else
+            {
+
+                return StatusCode(404, new { StatusCode = HttpStatusCode.NotFound, message = "Data Tidak Ditemukan", result = rCup });
+            }
+        }
+
         [HttpGet("ReportDivisi")]
         public ActionResult GetByDivisi(DateTime fromDate, DateTime thruDate)
         {

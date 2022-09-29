@@ -44,7 +44,7 @@ $(document).ready(function () {
             }
         },
         "bDestroy": true,
-        "lengthChange": true,
+        "lengthChange": false,
         "displayLength": 10,
         filter: true,
         orderMulti: false,
@@ -57,7 +57,13 @@ $(document).ready(function () {
         }],
         order: ([[0, "asc"], [2, "asc"]]),
         lengthMenu: [['10', '20', '50', '100', '-1'], ['10', '20', '50', '100', 'Show All']],
-        dom: 'lBfrtip',
+        dom: 'Bfrtip',
+        "buttons": [
+            {
+                extend: "excel", className: "btn btn-rounded", text: '<i class="fa fa-file-excel-o"> Excel</i>', titleAttr: 'Excel',
+                attr: { style: "background-color: Green;color: white;" }
+            },
+        ],
         columns: [
             {
                 render: function (data, type, row, meta) {
@@ -136,7 +142,13 @@ function searchFromDate() {
         }],
         order: ([[0, "asc"], [2, "asc"]]),
         lengthMenu: [['10', '20', '50', '100', '-1'], ['10', '20', '50', '100', 'Show All']],
-        dom: 'lBfrtip',
+        dom: 'Bfrtip',
+        "buttons": [
+            {
+                extend: "excel", className: "btn btn-rounded", text: '<i class="fa fa-file-excel-o"> Excel</i>', titleAttr: 'Excel',
+                attr: { style: "background-color: Green;color: white;" }
+            },
+        ],
         columns: [
             {
                 render: function (data, type, row, meta) {
