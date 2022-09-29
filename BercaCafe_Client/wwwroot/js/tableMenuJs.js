@@ -43,17 +43,15 @@ $(document).ready(function () {
         }],
         order: ([[0, "asc"], [1, "asc"]]),
         lengthMenu: [['10', '20', '50', '100', '-1'], ['10', '20', '50', '100', 'Show All']],
-        dom: 'Bfrtip',
+        dom: 'lBfrtip',
         "buttons": [
             {
-                extend: "excel", className: "btn btn-rounded", text: '<i class="fa fa-file-excel-o"> Excel</i>', titleAttr: 'Excel',
-                attr: { style: "background-color: Green;color: white;" }
+                extend: "excelHtml5", className: "btn btn-rounded", text: '<i class="fa fa-file-excel-o"> Excel</i>', titleAttr: 'Excel'
             },
         ],
         columns: [
             {
                 render: function (data, type, row, meta) {
-                    console.log(data);
                     return meta.row + meta.settings._iDisplayStart + 1 + '.';
                 }
             },
@@ -96,7 +94,6 @@ function searchFromDate() {
             "dataSrc": "result",
             async: true,
             error: function (data) {
-                console.log(data);
             }
         },
         "language": {
@@ -116,8 +113,7 @@ function searchFromDate() {
         dom: 'Bfrtip',
         "buttons": [
             {
-                extend: "excel", className: "btn btn-rounded", text: '<i class="fa fa-file-excel-o"> Excel</i>', titleAttr: 'Excel',
-                attr: { style: "background-color: Green;color: white;" }
+                extend: "excel", className: "btn btn-rounded", text: '<i class="fa fa-file-excel-o"> Excel</i>', titleAttr: 'Excel'
             },
         ],
         columns: [
