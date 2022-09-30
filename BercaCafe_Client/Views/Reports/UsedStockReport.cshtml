@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewData["Title"] = "Report by Used Stock";
+    ViewData["Page"] = "Reports";
+    Layout = "~/Pages/Shared/_DashboardLayout.cshtml";
+    ViewData["Now"] = DateTime.Now.ToString("MM-dd-yyyy");
+    var date = DateTime.Today;
+    ViewData["FirstDate"] = new DateTime(date.Year, date.Month, 1).ToString("MM-dd-yyyy");
+}
+@section css{
+    <link href="~/newtemplate/assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+}
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Report by Used Stock</h4>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 ">
+                                <div class="example">
+                                    <h5 class="box-title m-t-30">Date</h5>
+                                    <input class="form-control input-daterange-datepicker" type="text" name="daterange" id="dateFilter" value="@ViewData["FirstDate"] - @ViewData["Now"]" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive m-t-40">
+                        <table id="tblUsedStockReport" class="display nowrap table table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Materials Name</th>
+                                    <th>Stock</th>
+                                    <th>Input Date</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts{
+    <script src="~/newtemplate/assets/plugins/moment/moment.js"></script>
+    <!-- Date range Plugin JavaScript -->
+    <script src="~/newtemplate/assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="~/newtemplate/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="~/js/tableusedstockjs.js"></script>
+    <script src="~/newtemplate/assets/plugins/datatables/jquery.datatables.min.js"></script>
+    <!-- start - This is for export functionality only -->
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+    }

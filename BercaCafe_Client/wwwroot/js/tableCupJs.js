@@ -52,10 +52,14 @@ $(document).ready(function () {
         dom: 'Bfrtip',
         "buttons": [
             {
-                extend: "excel", className: "btn btn-rounded", text: '<i class="fa fa-file-excel-o"> Excel</i>', titleAttr: 'Excel',
-                attr: { style: "background-color: Green;color: white;"}
+                extend: "excelHtml5", className: "btnExcel btn btn-rounded", text: '<i class="fa fa-file-excel-o"> Excel</i>', titleAttr: 'Excel'
             },
         ],
+        initComplete: function () {
+            var btns = $('.btnExcel');
+            btns.css("background-color", "Green");
+            btns.css("color", "white");
+        },
         columns: [
             {
                 render: function (data, type, row, meta) {
@@ -118,10 +122,14 @@ $(document).ready(function () {
         dom: 'Bfrtip',
         "buttons": [
             {
-                extend: "excel", className: "btn btn-rounded", text: '<i class="fa fa-file-excel-o"> Excel</i>', titleAttr: 'Excel',
-                attr: { style: "background-color: Green;color: white;" }
+                extend: "excelHtml5", className: "btnExcel btn btn-rounded", text: '<i class="fa fa-file-excel-o"> Excel</i>', titleAttr: 'Excel'
             },
         ],
+        initComplete: function () {
+            var btns = $('.btnExcel');
+            btns.css("background-color", "Green");
+            btns.css("color", "white");
+        },
         columns: [
             {
                 render: function (data, type, row, meta) {
@@ -191,10 +199,14 @@ function searchFromDate() {
         dom: 'Bfrtip',
         "buttons": [
             {
-                extend: "excel", className: "btn btn-rounded", text: '<i class="fa fa-file-excel-o"> Excel</i>', titleAttr: 'Excel',
-                attr: { style: "background-color: Green;color: white;" }
+                extend: "excelHtml5", className: "btnExcel btn btn-rounded", text: '<i class="fa fa-file-excel-o"> Excel</i>', titleAttr: 'Excel'
             },
         ],
+        initComplete: function () {
+            var btns = $('.btnExcel');
+            btns.css("background-color", "Green");
+            btns.css("color", "white");
+        },
         columns: [
             {
                 render: function (data, type, row, meta) {
@@ -262,10 +274,14 @@ function searchFromDateDivision() {
         dom: 'Bfrtip',
         "buttons": [
             {
-                extend: "excel", className: "btn btn-rounded", text: '<i class="fa fa-file-excel-o"> Excel</i>', titleAttr: 'Excel',
-                attr: { style: "background-color: Green;color: white;" }
+                extend: "excelHtml5", className: "btnExcel btn btn-rounded", text: '<i class="fa fa-file-excel-o"> Excel</i>', titleAttr: 'Excel'
             },
         ],
+        initComplete: function () {
+            var btns = $('.btnExcel');
+            btns.css("background-color", "Green");
+            btns.css("color", "white");
+        },
         columns: [
             {
                 render: function (data, type, row, meta) {

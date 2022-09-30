@@ -28,5 +28,10 @@ namespace BercaCafe_Client.TempController
         {
             return View();
         }
+
+        public IActionResult UsedStockReport()
+        {
+            return View();
+        }
     }
 }

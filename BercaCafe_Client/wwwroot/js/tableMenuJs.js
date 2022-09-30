@@ -46,9 +46,14 @@ $(document).ready(function () {
         dom: 'lBfrtip',
         "buttons": [
             {
-                extend: "excelHtml5", className: "btn btn-rounded", text: '<i class="fa fa-file-excel-o"> Excel</i>', titleAttr: 'Excel'
+                extend: "excelHtml5", className: "btnExcel btn btn-rounded", text: '<i class="fa fa-file-excel-o"> Excel</i>', titleAttr: 'Excel'
             },
         ],
+        initComplete: function () {
+            var btns = $('.btnExcel');
+            btns.css("background-color", "Green");
+            btns.css("color", "white");
+        },
         columns: [
             {
                 render: function (data, type, row, meta) {
@@ -113,9 +118,14 @@ function searchFromDate() {
         dom: 'Bfrtip',
         "buttons": [
             {
-                extend: "excel", className: "btn btn-rounded", text: '<i class="fa fa-file-excel-o"> Excel</i>', titleAttr: 'Excel'
+                extend: "excelHtml5", className: "btnExcel btn btn-rounded", text: '<i class="fa fa-file-excel-o"> Excel</i>', titleAttr: 'Excel'
             },
         ],
+        initComplete: function () {
+            var btns = $('.btnExcel');
+            btns.css("background-color", "Green");
+            btns.css("color", "white");
+        },
         columns: [
             {
                 render: function (data, type, row, meta) {
