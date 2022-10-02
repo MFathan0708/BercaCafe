@@ -51,7 +51,9 @@ namespace BercaCafe_Client
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
-                endpoints.MapControllerRoute("Default", "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                        name: "default",
+                        pattern: "{controller=Dashboards}/{action=Index}/{id?}");
             });
         }
     }

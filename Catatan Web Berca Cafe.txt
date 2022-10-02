@@ -9,3 +9,13 @@ Setiap report ada summary nya di dalam satu halaman
 - Untuk dapat membuka page Dashboard / Menu, diharuskan melakukan submit order
 
 Flow Order :
+
+//Menu ID : Contohnya Latte, Raspberry
+//Cup ID : Employee Cup : 1, Berca Cup : 2
+//Type Menu : Ice : 1, Hot 2
+
+Sirup : 
+- Banana
+- Caramel
+- BUTTERSCOTCH
+- Raspberry

@@ -15,33 +15,44 @@ setTimeout(function () {
     getData();
 }, 20000)
 function addStock() {
-    var dataPost = {
-        "CompTypeID": $('#compTypeSelector').val(),
-        "MaterialsName": $('#brandName').val(),
-        "MaterialsStock": $('#total').val(),
-        "MaterialsQuantity": $('#composition').val(),
-        "MaterialsUnit": $('#unitSelector').val(),
-        "Price": $('#price').val()
-    };
-    $.ajax({
-        type: 'POST',
-        contentType: 'application/json; charset=utf-8',
-        url: 'https://localhost:44331/api/Stocks/AddMaterialsAll',
-        data: JSON.stringify(dataPost)
-    }).done((result) => {
-        swal({
-            title: "Berhasil",
-            text: "Berhasil menambahkan stock baru.",
-            type: "success",
-        });
-        table.ajax.reload();
-    }).fail(function (message) {
+    var regex = new RegExp(/([a-zA-Z]|[0-9]).*/);
+    if (regex.test($('#brandName').val().toString().trim())) {
+        var dataPost = {
+            "CompTypeID": $('#compTypeSelector').val(),
+            "MaterialsName": $('#brandName').val(),
+            "MaterialsStock": $('#total').val(),
+            "MaterialsQuantity": $('#composition').val(),
+            "MaterialsUnit": $('#unitSelector').val(),
+            "Price": $('#price').val()
+        };
+        $.ajax({
+            type: 'POST',
+            contentType: 'application/json; charset=utf-8',
+            url: 'https://localhost:44331/api/Stocks/AddMaterialsAll',
+            data: JSON.stringify(dataPost)
+        }).done((result) => {
+            swal({
+                title: "Berhasil",
+                text: "Berhasil menambahkan stock baru.",
+                type: "success",
+            });
+            table.ajax.reload();
+        }).fail(function (message) {
+            swal({
+                title: "Gagal",
+                text: message.responseJSON.message,
+                type: "error",
+            });
+        })
+    } else {
         swal({
             title: "Gagal",
-            text: message.responseJSON.message,
-            type: "error",
+            text: "Nama brand tidak boleh kosong!",
+            type: "error"
+        }, function () {
+            setTimeout(() => $('#brandName').focus(), 110);
         });
-    })
+    }
 }
 
 function getData() {
