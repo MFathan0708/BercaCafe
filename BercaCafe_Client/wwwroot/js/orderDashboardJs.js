@@ -1,6 +1,10 @@
 ﻿var menuid;
 var cardBool = false;
 
+$(document).ready(function (){
+    $("#hrTag").attr({ style: 'visibility: hidden;' });
+});
+
 function clickShowModal(name, menuId) {
     var regex = new RegExp(/[0-9]{10}/);
     if (regex.test($('#cardNumber').val().toString().trim()) && cardBool) {
@@ -57,6 +61,9 @@ function createOrder() {
                 title: "Berhasil",
                 text: message.message,
                 type: "success",
+            }, function () {
+
+                $('#exampleModal').modal('toggle');
             });
         });
     }
@@ -75,11 +82,20 @@ $("#cardNumber").on('change', function () {
                 text: message.responseJSON.message,
                 type: "error",
             });
+            document.getElementById("hName").innerHTML = '';
+            $("#hrTag").attr({ style: 'visibility: hidden;' });
+            document.getElementById("hDept").innerHTML = '';
             cardBool = false;
-        }).done(function () {
+        }).done(function (message) {
+            document.getElementById("hName").innerHTML = message.result.employeeName;
+            $("#hrTag").attr({ style: 'visibility: visible;' });
+            document.getElementById("hDept").innerHTML = message.result.dept;
             cardBool = true;
         });
     } else {
         cardBool = false;
+        document.getElementById("hName").innerHTML = '';
+        $("#hrTag").attr({ style: 'visibility: hidden;' });
+        document.getElementById("hDept").innerHTML = '';
     }
 });
