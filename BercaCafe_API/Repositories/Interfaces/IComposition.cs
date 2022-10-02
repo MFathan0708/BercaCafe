@@ -9,6 +9,6 @@ namespace APIDapper.Repositories.Interfaces
         CompositionVm Get(int CompID);
         int Insert(CompositionVm compositionVm);
         int Update(CompositionVm compositionVm);
-        IEnumerable<CompositionVm> GetByMenu(int menuID);
+        IEnumerable<CompositionVm> GetByMenu(int menuID, int menuType);
     }
 }

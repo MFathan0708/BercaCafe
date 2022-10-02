@@ -66,7 +66,7 @@ namespace BercaCafe_API.Controllers
 
             }
         }
-        
+
         [HttpGet("{CompID}")]
         public ActionResult Get(int CompID)
         {
@@ -74,7 +74,7 @@ namespace BercaCafe_API.Controllers
             {
                 var Get = compositionRepository.Get(CompID);
 
-                return StatusCode(200, new { StatusCode = HttpStatusCode.OK, message = "Data Berhasil Ditemukan!", result = Get});
+                return StatusCode(200, new { StatusCode = HttpStatusCode.OK, message = "Data Berhasil Ditemukan!", result = Get });
             }
             catch (Exception)
             {
@@ -82,12 +82,12 @@ namespace BercaCafe_API.Controllers
             }
         }
 
-        [Route("menu/{menuID}")]
-        [HttpGet("menu/{menuID}")]
-        public ActionResult GetByMenu(int menuID)
+        [Route("menu/{menuID}/{typeMenu}")]
+        [HttpGet("menu/{menuID}/{typeMenu}")]
+        public ActionResult GetByMenu(int menuID, int typeMenu)
         {
-            var menuComposition = compositionRepository.GetByMenu(menuID);
-            if(menuComposition.Count() != 0)
+            var menuComposition = compositionRepository.GetByMenu(menuID, typeMenu);
+            if (menuComposition.Count() != 0)
             {
                 return StatusCode(200, new
                 {
@@ -99,8 +99,8 @@ namespace BercaCafe_API.Controllers
             }
             else
             {
-                return StatusCode(404, new 
-                { 
+                return StatusCode(404, new
+                {
                     StatusCode = HttpStatusCode.NotFound,
                     message = "No Composition"
                 });

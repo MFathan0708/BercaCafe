@@ -64,7 +64,7 @@ namespace BercaCafe_API.Controllers
                         var menu = menuRepository.GetMenuById(order.menuID);
                         order.menuID = menu.MenuID;
                         List<UpdateCompTypeVM> updateComps = new List<UpdateCompTypeVM>();
-                        var menuComposition = compositionRepository.GetByMenu(order.menuID);
+                        var menuComposition = compositionRepository.GetByMenu(order.menuID, order.typeMenu);
                         if (menuComposition.Count() != 0)
                         {
                             foreach (var comp in menuComposition)
@@ -73,6 +73,13 @@ namespace BercaCafe_API.Controllers
                                 update.CompTypeID = comp.CompTypeID;
                                 update.Quantity = comp.Quantity;
                                 updateComps.Add(update);
+                            }
+                            if (order.cupID == 2)
+                            {
+                                UpdateCompTypeVM cupType = new UpdateCompTypeVM();
+                                cupType.CompTypeID = 12;
+                                cupType.Quantity = 1;
+                                updateComps.Add(cupType);
                             }
                             foreach (var compType in updateComps)
                             {
@@ -95,7 +102,8 @@ namespace BercaCafe_API.Controllers
                                         });
                                     }
                                 }
-                                else {
+                                else
+                                {
                                 }
                             }
                             foreach (var compTypeCompareFinal in updateComps)
@@ -109,7 +117,8 @@ namespace BercaCafe_API.Controllers
                                         message = "Bahan baku tidak cukup"
                                     });
                                 }
-                                else {
+                                else
+                                {
                                 }
                             }
                             foreach (var compTypeSubstract in updateComps)
@@ -117,7 +126,8 @@ namespace BercaCafe_API.Controllers
                                 compositionTypeRepository.SubstractCompositionType(compTypeSubstract);
                             }
                         }
-                        else {
+                        else
+                        {
                         }
                         // placing order
                         var transaction = orderRepository.ComposeOrder(emp, order);
@@ -149,7 +159,7 @@ namespace BercaCafe_API.Controllers
                 });
             }
         }
-        public bool InsufficientCompType (UpdateCompTypeVM compType)
+        public bool InsufficientCompType(UpdateCompTypeVM compType)
         {
             var stock = compositionTypeRepository.Get(compType.CompTypeID);
             return stock.TypeQuantity < compType.Quantity;

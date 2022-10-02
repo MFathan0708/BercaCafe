@@ -37,7 +37,7 @@ namespace BercaCafe_API.Controllers
 
         public ActionResult Insert(CompositionTypeVm compositionTypeVm)
         {
-            int Ins = 1 ;
+            int Ins = 1;
             switch (Ins)
             {
                 case 1:
@@ -49,13 +49,13 @@ namespace BercaCafe_API.Controllers
                     return Ok();
             }
         }
-        
+
         [HttpPut]
 
         public ActionResult Update(CompositionTypeVm compositionTypeVm)
         {
             var Upd = compositionTypeRepository.Update(compositionTypeVm);
-            switch(Upd)
+            switch (Upd)
             {
                 case 0:
                     return StatusCode(404, new { StatusCode = HttpStatusCode.NotFound, message = "Data Composisi Type Gagal Diperbaharui!", result = Upd });
@@ -80,18 +80,19 @@ namespace BercaCafe_API.Controllers
                 return StatusCode(404, new { StatusCode = HttpStatusCode.NotFound, message = "Data Composisi Type Gagal Dihapus!", result = Del });
             }
         }
-        
+
         [HttpGet("{CompTypeID}")]
         public ActionResult Get(int CompTypeID)
         {
-            try { 
-            var Get = compositionTypeRepository.Get(CompTypeID);
-
-                return StatusCode(200, new { StatusCode = HttpStatusCode.OK, message = "Data Berhasil Ditemukan!", result = Get});
-            }
-            catch (Exception Get)
+            try
             {
-                return StatusCode(404, new { StatusCode = HttpStatusCode.NotFound, message = "Data Tidak Ada!"});
+                var Get = compositionTypeRepository.Get(CompTypeID);
+
+                return StatusCode(200, new { StatusCode = HttpStatusCode.OK, message = "Data Berhasil Ditemukan!", result = Get });
+            }
+            catch
+            {
+                return StatusCode(404, new { StatusCode = HttpStatusCode.NotFound, message = "Data Tidak Ada!" });
             }
         }
 
@@ -110,9 +111,10 @@ namespace BercaCafe_API.Controllers
                         message = "Berhasil mengurangi bahan"
                     });
                 case -1:
-                    return StatusCode(404, new 
-                    { StatusCode = HttpStatusCode.NotFound, 
-                        message = "Bahan tidak ditemukan" 
+                    return StatusCode(404, new
+                    {
+                        StatusCode = HttpStatusCode.NotFound,
+                        message = "Bahan tidak ditemukan"
                     });
                 default:
                     return StatusCode(500, new

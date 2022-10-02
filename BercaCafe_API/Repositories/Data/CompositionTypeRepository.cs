@@ -1,8 +1,12 @@
-﻿using APIDapper.Repositories.Interfaces;
+﻿using APIDapper.Models;
+using APIDapper.Repositories.Interfaces;
+using BercaCafe_API.Models;
 using BercaCafe_API.ViewModels;
 using Dapper;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Data;
 
@@ -10,14 +14,15 @@ namespace BercaCafe_API.Repositories.Data
 {
     public class CompositionTypeRepository : ICompositionType
     {
-        public IConfiguration _configuration;  //agar bisa baca object appsetting.json
+        public IConfiguration _configuration;
 
         public CompositionTypeRepository(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
-        DynamicParameters parameters = new DynamicParameters(); //menggunakan orm dapper agar bisa query sql pada method. atau menggunakan store procedure.
+        DynamicParameters parameters = new DynamicParameters();
+
         IEnumerable<CompositionTypeVm> ICompositionType.Get()
         {
             using (SqlConnection connection = new SqlConnection(_configuration["ConnectionStrings:BercaCafe"])) //manggil object connection string dari file appsettings.json
@@ -92,4 +97,5 @@ namespace BercaCafe_API.Repositories.Data
             }
         }
     }
-}
+}    
+

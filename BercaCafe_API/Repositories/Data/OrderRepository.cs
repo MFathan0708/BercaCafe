@@ -9,14 +9,12 @@ namespace BercaCafe_API.Repositories.Data
 {
     public class OrderRepository : IOrder
     {
-        public IConfiguration _configuration;  //agar bisa baca object appsetting.json
-
+        public IConfiguration _configuration;
         public OrderRepository(IConfiguration configuration)
         {
             _configuration = configuration;
         }
-
-        DynamicParameters parameters = new DynamicParameters(); //menggunakan orm dapper agar bisa query sql pada method. atau menggunakan store procedure.
+        DynamicParameters parameters = new DynamicParameters();
         public int PlaceOrder(OrderTransactionVM orderTransaction)
         {
             using (SqlConnection connection = new SqlConnection(_configuration["ConnectionStrings:BercaCafe"]))
@@ -31,7 +29,7 @@ namespace BercaCafe_API.Repositories.Data
                 return result;
             }
         }
-        public OrderTransactionVM ComposeOrder(EmployeeCardDataVM employee, OrderVM order)
+        public OrderTransactionVM ComposeOrder (EmployeeCardDataVM employee, OrderVM order)
         {
             OrderTransactionVM transaction = new OrderTransactionVM();
             transaction.employeeKey = employee.EmployeeKey;

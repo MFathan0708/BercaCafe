@@ -1,4 +1,6 @@
-﻿using BercaCafe_API.ViewModels;
+﻿using APIDapper.Models;
+using BercaCafe_API.Models;
+using BercaCafe_API.ViewModels;
 using System.Collections.Generic;
 
 namespace APIDapper.Repositories.Interfaces
@@ -13,3 +15,4 @@ namespace APIDapper.Repositories.Interfaces
         public int SubstractCompositionType(UpdateCompTypeVM compType);
     }
 }
+

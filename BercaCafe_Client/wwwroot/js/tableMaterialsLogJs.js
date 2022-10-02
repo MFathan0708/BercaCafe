@@ -1,5 +1,5 @@
 ﻿var table;
-
+var saveData = [];
 function convertToRupiah(angka) {
     var rupiah = '';
     var angkarev = angka.toString().split('').reverse().join('');
@@ -11,9 +11,9 @@ $(document).ready(function () {
     getData();
 });
 
-setTimeout(function () {
+/*setTimeout(function () {
     getData();
-}, 20000)
+}, 20000)*/
 function addStock() {
     var regex = new RegExp(/([a-zA-Z]|[0-9]).*/);
     if (regex.test($('#brandName').val().toString().trim())) {
@@ -35,8 +35,9 @@ function addStock() {
                 title: "Berhasil",
                 text: "Berhasil menambahkan stock baru.",
                 type: "success",
+            }, function () {
+                location.reload(true);
             });
-            table.ajax.reload();
         }).fail(function (message) {
             swal({
                 title: "Gagal",
@@ -57,7 +58,6 @@ function addStock() {
 
 function getData() {
     $('#tblMaterialsLog').DataTable().clear().draw();
-    $('#compTypeSelector').empty();
     var dataResults = [];
     $.ajax({
         "url": "https://localhost:44331/api/Stocks/MaterialsLog",
@@ -143,6 +143,36 @@ function getData() {
                 cell.innerHTML = i + 1;
             });
         }).draw();
+        getCompType();
+    })
+}
+
+$("#compTypeSelector").on('change', function () {
+    $('#unitSelector').empty();
+    $(saveData).each(function (_, i) {
+        if ($('#compTypeSelector').val() == i.compTypeId) {
+            $('#unitSelector').append($('<option/>').val(i.compUnit).text(i.compUnit));
+            return false;
+        }
+    });
+});
+
+function getCompType() {
+    $('#compTypeSelector').empty();
+    $('#unitSelector').empty();
+    var dataResults = [];
+    $.ajax({
+        "url": "https://localhost:44331/api/Stocks/CompTypeAll",
+        "type": "GET",
+        dataType: "JSON"
+    }).done((result) => {
+        dataResults = result.result;
+        saveData = dataResults;
+        $(dataResults).each(function (_, i) {
+            $('#compTypeSelector').append($('<option/>').val(i.compTypeId).text(i.typeName));
+        });
+        $('#unitSelector').append($('<option/>').val(dataResults[0].compUnit).text(dataResults[0].compUnit));
+        /*dataResults = result.result;
         dataResults = dataResults.filter((value, index, self) =>
             index === self.findIndex((t) => (
                 t.compTypeId === value.compTypeId && t.typeName === value.typeName
@@ -150,6 +180,6 @@ function getData() {
         )
         $(dataResults).each(function (_, i) {
             $('#compTypeSelector').append($('<option/>').val(i.compTypeId).text(i.typeName));
-        });
+        });*/
     })
 }

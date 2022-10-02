@@ -9,14 +9,15 @@ namespace BercaCafe_API.Repositories.Data
 {
     public class RefillRepository : IRefill
     {
-        public IConfiguration _configuration;  //agar bisa baca object appsetting.json
+        public IConfiguration _configuration;
 
         public RefillRepository(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
-        DynamicParameters parameters = new DynamicParameters(); //menggunakan orm dapper agar bisa query sql pada method. atau menggunakan store procedure.
+        // DynamicParameters parameters = new DynamicParameters();
+
         public RefillVm Get(int CompTypeID)
         {
             DynamicParameters parameters = new DynamicParameters();

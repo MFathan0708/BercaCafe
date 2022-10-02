@@ -5,12 +5,13 @@
 @section css{
     <link href="~/newtemplate/assets/plugins/magnific-popup-master/dist/magnific-popup.css" rel="stylesheet" />
     <link href="~/newtemplate/assets/plugins/icheck/skins/all.css" rel="stylesheet" />
+    <link href="~/newtemplate/assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
 }
 
 <!-- Row -->
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="exampleModalLabel1">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="exampleModalLabel1">New Order</h4>
@@ -23,11 +24,11 @@
                                 <label>Jenis : </label>
                                 <div class="row">
                                     <div class="col-sm-5">
-                                        <input tabindex="7" type="radio" class="check" id="radioIce" name="radioType" data-radio="iradio_square-red" value="tes">
+                                        <input tabindex="7" type="radio" class="check" id="radioIce" name="radioType" data-radio="iradio_square-red" value="1">
                                         <label for="radioIce">Ice</label>
                                     </div>
                                     <div class="col-sm-5">
-                                        <input tabindex="8" type="radio" class="check" id="radioHot" name="radioType" data-radio="iradio_square-red" value="tess">
+                                        <input tabindex="8" type="radio" class="check" id="radioHot" name="radioType" data-radio="iradio_square-red" value="2">
                                         <label for="radioHot">Hot</label>
                                     </div>
                                 </div>
@@ -36,16 +37,16 @@
                                 <label>Cup : </label>
                                 <div class="row">
                                     <div class="col-sm-5">
-                                        <input tabindex="7" type="radio" class="check" id="radioEmployeeCup" name="radioCup" data-radio="iradio_square-red" value="tes">
+                                        <input tabindex="7" type="radio" class="check" id="radioEmployeeCup" name="radioCup" data-radio="iradio_square-red" value="1">
                                         <label for="radioEmployeeCup">Employee Cup</label>
                                     </div>
                                     <div class="col-sm-5">
-                                        <input tabindex="8" type="radio" class="check" id="radioBercaCup" name="radioCup" data-radio="iradio_square-red" value="tess">
+                                        <input tabindex="8" type="radio" class="check" id="radioBercaCup" name="radioCup" data-radio="iradio_square-red" value="2">
                                         <label for="radioBercaCup">Berca Cup</label>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            @*<div class="form-group">
                                 <label>Milk : </label>
                                 <div class="row">
                                     <div class="col-sm-5">
@@ -105,7 +106,7 @@
                                         <label for="radioNormalSugar">Normal Sugar</label>
                                     </div>
                                 </div>
-                            </div>
+                            </div>*@
 
                         </div>
                     </form>
@@ -119,9 +120,23 @@
     </div>
     <div class="row el-element-overlay">
         <div class="col-md-12">
+            <div class="card card-outline-info">
+                <div class="card-header">
+                    <h4 class="m-b-0 text-white">Tapping Here</h4>
+                </div>
+                <div class="card-body">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label" for="cardNumber">Card Number :</label>
+                            <input type="number" id="cardNumber" class="form-control" placeholder="Min 10 length of numbers">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
             <h4 class="card-title"><b>Choose Menu</b></h4>
         </div>
-        
         @if (ViewBag.Data != null){
         @foreach (var item in ViewBag.Data)
         {
@@ -152,4 +167,6 @@
     <script src="~/newtemplate/assets/plugins/icheck/icheck.init.js"></script>
     <script src="~/newtemplate/assets/plugins/icheck/icheck.min.js"></script>
     <script src="~/js/orderdashboardjs.js"></script>
+    <script src="~/newtemplate/assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
+    <script src="~/newtemplate/assets/plugins/sweetalert/sweetalert.min.js"></script>
 }

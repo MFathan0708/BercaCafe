@@ -43,22 +43,22 @@ namespace BercaCafe_API.Controllers
         [HttpGet]
         public ActionResult GetByCard(string cardNo)
         {
-            var employee = employeeUserRepository.GetByCardNo(cardNo);
-            if(employee == null)
+            try
             {
-                return StatusCode(404, new
-                {
-                    status = HttpStatusCode.NotFound,
-                    message = "Data tidak ditemukan"
-                });
-            }
-            else
-            {
+                var employee = employeeUserRepository.GetByCardNo(cardNo);
                 return StatusCode(200, new
                 {
                     status = HttpStatusCode.OK,
                     message = "Data ada",
                     result = employee
+                });
+            }
+            catch
+            {
+                return StatusCode(404, new
+                {
+                    status = HttpStatusCode.NotFound,
+                    message = "Data tidak ditemukan"
                 });
             }
         }

@@ -10,14 +10,15 @@ namespace BercaCafe_API.Repositories.Data
 {
     public class CompositionRepository : IComposition
     {
-        public IConfiguration _configuration;  //agar bisa baca object appsetting.json
+        public IConfiguration _configuration;
 
         public CompositionRepository(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
-        DynamicParameters parameters = new DynamicParameters(); //menggunakan orm dapper agar bisa query sql pada method. atau menggunakan store procedure.
+        DynamicParameters parameters = new DynamicParameters();
+
         IEnumerable<CompositionVm> IComposition.Get()
         {
             using (SqlConnection connection = new SqlConnection(_configuration["ConnectionStrings:BercaCafe"])) //manggil object connection string dari file appsettings.json
@@ -58,7 +59,7 @@ namespace BercaCafe_API.Repositories.Data
                 return Update;
             }
         }
-
+        
         public CompositionVm Get(int CompID)
         {
             using (SqlConnection connection = new SqlConnection(_configuration["ConnectionStrings:BercaCafe"])) //manggil object connection string dari file appsettings.json
@@ -71,15 +72,17 @@ namespace BercaCafe_API.Repositories.Data
             }
         }
 
-        public IEnumerable<CompositionVm> GetByMenu(int menuID)
+        public IEnumerable<CompositionVm> GetByMenu(int menuID, int menuType)
         {
             using (SqlConnection connection = new SqlConnection(_configuration["ConnectionStrings:BercaCafe"])) //manggil object connection string dari file appsettings.json
             {
                 var spName = "spGetAllDataCompositionByMenuNew";
                 parameters.Add("@MenuID", menuID);
+                parameters.Add("@MenuType", menuType);
                 var menuComposition = connection.Query<CompositionVm>(spName, parameters, commandType: CommandType.StoredProcedure);
                 return menuComposition;
             }
         }
     }
 }
+

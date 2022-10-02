@@ -509,3 +509,4 @@ D:\BercaCafe\BercaCafe_Client\obj\Debug\netcoreapp3.1\BercaCafe_Client.csproj.Co
 D:\BercaCafe\BercaCafe_Client\obj\Debug\netcoreapp3.1\BercaCafe_Client.dll
 D:\BercaCafe\BercaCafe_Client\obj\Debug\netcoreapp3.1\BercaCafe_Client.pdb
 D:\BercaCafe\BercaCafe_Client\obj\Debug\netcoreapp3.1\BercaCafe_Client.genruntimeconfig.cache
+D:\Bootcamp\BercaCafe\BercaCafe_Client\obj\Debug\netcoreapp3.1\Razor\Views\Reports\UsedStockReport.cshtml.g.cs

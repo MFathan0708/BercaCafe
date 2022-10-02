@@ -9,14 +9,12 @@ namespace BercaCafe_API.Repositories.Data
 {
     public class EmployeeUserRepository : IEmployeeUser
     {
-        public IConfiguration _configuration;  //agar bisa baca object appsetting.json
-
+        public IConfiguration _configuration;
         public EmployeeUserRepository(IConfiguration configuration)
         {
             _configuration = configuration;
         }
-
-        DynamicParameters parameters = new DynamicParameters(); //menggunakan orm dapper agar bisa query sql pada method. atau menggunakan store procedure.
+        DynamicParameters parameters = new DynamicParameters();
         public EmployeeUserIDVM GetByEmployeeKey(int employeeKey)
         {
 
@@ -38,5 +36,6 @@ namespace BercaCafe_API.Repositories.Data
                 return employeeByCard;
             }
         }
+
     }
 }
