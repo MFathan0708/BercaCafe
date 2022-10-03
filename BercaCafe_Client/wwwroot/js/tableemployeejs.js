@@ -30,6 +30,7 @@ $(document).ready(function () {
         }
     })
     splitDate = $('#dateFilter').val().toString().split('-');
+    console.log("https://localhost:44331/api/Reports/ReportEmployee/?fromDate=" + splitDate[0].toString().trim().replaceAll('/', '-') + "&thruDate=" + splitDate[0].toString().trim().replaceAll('/', '-') + "&department=--ALL--&employeeId=0");
     table = $('#tblEmployeeReport').DataTable({
         "paging": true,
         "autoWidth": false,
@@ -115,9 +116,12 @@ $("#employeeId").on('change', function () {
 
 function searchFromDate() {
     var empId = 0;
-    console.log($('#employeeId').val());
-    if ($('#employeeId').val() != null) {
+    if ($('#employeeId').val() != '') {
         empId = $('#employeeId').val();
+    }
+    var depart = "--ALL--";
+    if ($('#departmentSelector').select2('data').length != 0) {
+        depart = $('#departmentSelector').select2('data')[0].text;
     }
     $('#tblEmployeeReport').DataTable().clear().draw();
     splitDate = $('#dateFilter').val().toString().split('-');
@@ -126,7 +130,7 @@ function searchFromDate() {
         "autoWidth": false,
         "responsive": true,
         "ajax": {
-            "url": "https://localhost:44331/api/Reports/ReportEmployee/?fromDate=" + splitDate[0].toString().trim().replaceAll('/', '-') + "&thruDate=" + splitDate[1].toString().trim().replaceAll('/', '-') + "&department=" + $('#departmentSelector').select2('data').toString().replaceAll("&", "%26") + "&employeeId=" + empId,
+            "url": "https://localhost:44331/api/Reports/ReportEmployee/?fromDate=" + splitDate[0].toString().trim().replaceAll('/', '-') + "&thruDate=" + splitDate[1].toString().trim().replaceAll('/', '-') + "&department=" + depart.toString().replaceAll("&", "%26") + "&employeeId=" + empId,
             "type": "GET",
             "dataType": "json",
             "dataSrc": "result",
