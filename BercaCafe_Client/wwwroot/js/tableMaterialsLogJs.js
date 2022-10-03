@@ -17,34 +17,61 @@ $(document).ready(function () {
 function addStock() {
     var regex = new RegExp(/([a-zA-Z]|[0-9]).*/);
     if (regex.test($('#brandName').val().toString().trim())) {
-        var dataPost = {
-            "CompTypeID": $('#compTypeSelector').val(),
-            "MaterialsName": $('#brandName').val(),
-            "MaterialsStock": $('#total').val(),
-            "MaterialsQuantity": $('#composition').val(),
-            "MaterialsUnit": $('#unitSelector').val(),
-            "Price": $('#price').val()
-        };
-        $.ajax({
-            type: 'POST',
-            contentType: 'application/json; charset=utf-8',
-            url: 'https://localhost:44331/api/Stocks/AddMaterialsAll',
-            data: JSON.stringify(dataPost)
-        }).done((result) => {
-            swal({
-                title: "Berhasil",
-                text: "Berhasil menambahkan stock baru.",
-                type: "success",
-            }, function () {
-                location.reload(true);
-            });
-        }).fail(function (message) {
+        if ($('#total').val() == 0 || $('#total').val() == '') {
             swal({
                 title: "Gagal",
-                text: message.responseJSON.message,
-                type: "error",
+                text: "Total tidak boleh kosong atau berisi nilai 0!",
+                type: "error"
+            }, function () {
+                setTimeout(() => $('#total').focus(), 110);
             });
-        })
+        } else if ($('#composition').val() == 0 || $('#composition').val() == '') {
+            swal({
+                title: "Gagal",
+                text: "Composition tidak boleh kosong atau berisi nilai 0!",
+                type: "error"
+            }, function () {
+                setTimeout(() => $('#composition').focus(), 110);
+            });
+        } else if ($('#price').val() == 0 || $('#price').val() == '') {
+            swal({
+                title: "Gagal",
+                text: "Price tidak boleh kosong atau berisi nilai 0!",
+                type: "error"
+            }, function () {
+                setTimeout(() => $('#price').focus(), 110);
+            });
+        }
+        else {
+            var dataPost = {
+                "CompTypeID": $('#compTypeSelector').val(),
+                "MaterialsName": $('#brandName').val(),
+                "MaterialsStock": $('#total').val(),
+                "MaterialsQuantity": $('#composition').val(),
+                "MaterialsUnit": $('#unitSelector').val(),
+                "Price": $('#price').val()
+            };
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                url: 'https://localhost:44331/api/Stocks/AddMaterialsAll',
+                data: JSON.stringify(dataPost)
+            }).done((result) => {
+                swal({
+                    title: "Berhasil",
+                    text: "Berhasil menambahkan stock baru.",
+                    type: "success",
+                }, function () {
+                    location.reload(true);
+                });
+            }).fail(function (message) {
+                swal({
+                    title: "Gagal",
+                    text: message.responseJSON.message,
+                    type: "error",
+                });
+            })
+        }
     } else {
         swal({
             title: "Gagal",

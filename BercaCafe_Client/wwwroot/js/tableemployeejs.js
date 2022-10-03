@@ -114,6 +114,11 @@ $("#employeeId").on('change', function () {
 });
 
 function searchFromDate() {
+    var empId = 0;
+    console.log($('#employeeId').val());
+    if ($('#employeeId').val() != null) {
+        empId = $('#employeeId').val();
+    }
     $('#tblEmployeeReport').DataTable().clear().draw();
     splitDate = $('#dateFilter').val().toString().split('-');
     table = $('#tblEmployeeReport').DataTable({
@@ -121,7 +126,7 @@ function searchFromDate() {
         "autoWidth": false,
         "responsive": true,
         "ajax": {
-            "url": "https://localhost:44331/api/Reports/ReportEmployee/?fromDate=" + splitDate[0].toString().trim().replaceAll('/', '-') + "&thruDate=" + splitDate[1].toString().trim().replaceAll('/', '-') + "&department=" + $('#departmentSelector').val().toString().replaceAll("&", "%26") + "&employeeId=" + $('#employeeId').val(),
+            "url": "https://localhost:44331/api/Reports/ReportEmployee/?fromDate=" + splitDate[0].toString().trim().replaceAll('/', '-') + "&thruDate=" + splitDate[1].toString().trim().replaceAll('/', '-') + "&department=" + $('#departmentSelector').select2('data').toString().replaceAll("&", "%26") + "&employeeId=" + empId,
             "type": "GET",
             "dataType": "json",
             "dataSrc": "result",
